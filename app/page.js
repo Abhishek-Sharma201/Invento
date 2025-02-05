@@ -1,101 +1,207 @@
+"use client";
+
+import React, { useEffect, useRef, useState } from "react";
+import Typed from "typed.js";
+import Cylinder from "./components/3D/Cylinder";
+import MouseFollower from "./components/MouseFollower";
+import Loader from "./components/Loader";
+import Link from "next/link";
 import Image from "next/image";
+import Footer from "./components/Footer";
+import Nav from "./components/Nav";
+import { Download } from "lucide-react";
 
-export default function Home() {
-  return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              app/page.js
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+const Page = () => {
+  const type1Ref = useRef(null);
+  const type2Ref = useRef(null);
+  const [isLoading, setIsLoading] = useState(true);
+  const [isMobile, setIsMobile] = useState(false);
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
-        </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+  const PlayStore = (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      x="0px"
+      y="0px"
+      width="30px"
+      height="30px"
+      viewBox="0 0 48 48"
+    >
+      <linearGradient
+        id="jFdG-76_seIEvf-hbjSsaa_rZwnRdJyYqRi_gr1"
+        x1="1688.489"
+        x2="1685.469"
+        y1="-883.003"
+        y2="-881.443"
+        gradientTransform="matrix(11.64 0 0 22.55 -19615.32 19904.924)"
+        gradientUnits="userSpaceOnUse"
+      >
+        <stop offset="0" stop-color="#047ed6"></stop>
+        <stop offset="1" stop-color="#50e6ff"></stop>
+      </linearGradient>
+      <path
+        fill="url(#jFdG-76_seIEvf-hbjSsaa_rZwnRdJyYqRi_gr1)"
+        fill-rule="evenodd"
+        d="M7.809,4.608c-0.45,0.483-0.708,1.227-0.708,2.194	v34.384c0,0.967,0.258,1.711,0.725,2.177l0.122,0.103L27.214,24.2v-0.433L7.931,4.505L7.809,4.608z"
+        clip-rule="evenodd"
+      ></path>
+      <linearGradient
+        id="jFdG-76_seIEvf-hbjSsab_rZwnRdJyYqRi_gr2"
+        x1="1645.286"
+        x2="1642.929"
+        y1="-897.055"
+        y2="-897.055"
+        gradientTransform="matrix(9.145 0 0 7.7 -15001.938 6931.316)"
+        gradientUnits="userSpaceOnUse"
+      >
+        <stop offset="0" stop-color="#ffda1c"></stop>
+        <stop offset="1" stop-color="#feb705"></stop>
+      </linearGradient>
+      <path
+        fill="url(#jFdG-76_seIEvf-hbjSsab_rZwnRdJyYqRi_gr2)"
+        fill-rule="evenodd"
+        d="M33.623,30.647l-6.426-6.428v-0.45l6.428-6.428	l0.139,0.086l7.603,4.321c2.177,1.227,2.177,3.249,0,4.493l-7.603,4.321C33.762,30.561,33.623,30.647,33.623,30.647z"
+        clip-rule="evenodd"
+      ></path>
+      <linearGradient
+        id="jFdG-76_seIEvf-hbjSsac_rZwnRdJyYqRi_gr3"
+        x1="1722.978"
+        x2="1720.622"
+        y1="-889.412"
+        y2="-886.355"
+        gradientTransform="matrix(15.02 0 0 11.5775 -25848.943 10324.73)"
+        gradientUnits="userSpaceOnUse"
+      >
+        <stop offset="0" stop-color="#d9414f"></stop>
+        <stop offset="1" stop-color="#8c193f"></stop>
+      </linearGradient>
+      <path
+        fill="url(#jFdG-76_seIEvf-hbjSsac_rZwnRdJyYqRi_gr3)"
+        fill-rule="evenodd"
+        d="M33.762,30.561l-6.565-6.567L7.809,43.382	c0.708,0.761,1.9,0.847,3.232,0.103L33.762,30.561"
+        clip-rule="evenodd"
+      ></path>
+      <linearGradient
+        id="jFdG-76_seIEvf-hbjSsad_rZwnRdJyYqRi_gr4"
+        x1="1721.163"
+        x2="1722.215"
+        y1="-891.39"
+        y2="-890.024"
+        gradientTransform="matrix(15.02 0 0 11.5715 -25848.943 10307.886)"
+        gradientUnits="userSpaceOnUse"
+      >
+        <stop offset="0" stop-color="#33c481"></stop>
+        <stop offset="1" stop-color="#61e3a7"></stop>
+      </linearGradient>
+      <path
+        fill="url(#jFdG-76_seIEvf-hbjSsad_rZwnRdJyYqRi_gr4)"
+        fill-rule="evenodd"
+        d="M33.762,17.429L11.041,4.522	c-1.33-0.761-2.524-0.658-3.232,0.103l19.386,19.369L33.762,17.429z"
+        clip-rule="evenodd"
+      ></path>
+    </svg>
   );
-}
+
+  useEffect(() => {
+    let typed1;
+    if (type1Ref.current) {
+      typed1 = new Typed(type1Ref.current, {
+        strings: ["999 Studio"],
+        typeSpeed: 100,
+        backSpeed: 50,
+        startDelay: 500,
+        backDelay: 1000,
+        loop: true,
+        showCursor: false,
+      });
+    }
+    return () => {
+      if (typed1) typed1.destroy();
+    };
+  }, [isLoading]);
+
+  useEffect(() => {
+    let typed2;
+    if (type2Ref.current) {
+      typed2 = new Typed(type2Ref.current, {
+        strings: ["Unity", "Blender", "Sketch-Fab", "Core"],
+        typeSpeed: 100,
+        backSpeed: 50,
+        startDelay: 1000,
+        backDelay: 1500,
+        loop: true,
+        showCursor: false,
+      });
+    }
+    return () => {
+      if (typed2) typed2.destroy();
+    };
+  }, [isLoading]);
+
+  useEffect(() => {
+    const handlePageLoad = () => setIsLoading(false);
+
+    if (document.readyState === "complete") {
+      handlePageLoad();
+    } else {
+      window.addEventListener("load", handlePageLoad);
+    }
+
+    return () => {
+      window.removeEventListener("load", handlePageLoad);
+    };
+  }, []);
+
+  useEffect(() => {
+    if (window.innerWidth <= 768) setIsMobile(true);
+  }, []);
+
+  return (
+    <main className=" w-full h-auto ">
+      {isMobile ? "" : <MouseFollower />}
+      {isLoading ? (
+        <Loader />
+      ) : (
+        <div className=" w-full h-[max-content] flex flex-col items-center justify-center gap-4 ">
+          <Nav />
+          <div className="w-full h-[100dvh] overflow-hidden flex flex-col items-center justify-start relative">
+            <div className="z-40 px-28 absolute top-0 left-0 h-full w-full flex items-start justify-between gap-8">
+              <div className="h-full w-[max-content] flex flex-col items-start justify-center gap-6">
+                <h2 className="text-[1.2rem]">Team Name</h2>
+                <h1
+                  id="team_name"
+                  className="text-[4rem] h-[10dvh]"
+                  ref={type1Ref}
+                ></h1>
+                <p className="w-[25dvw] text-wrap text-[.8rem] font-[200]">
+                  Venture into stunning realms, slay monsters, and conquer the
+                  unknown—Unleash your power in Unity's masterpiece!
+                </p>
+                <div className="h-[max-content] w-[max-content] flex flex-col items-start justify-center gap-2">
+                  <h2 className="text-[1.2rem]">Build using</h2>
+                  <p className="text-[3rem] h-[10dvh]" ref={type2Ref}></p>
+                </div>
+              </div>
+              <div className="h-full w-[max-content] flex flex-col items-start justify-center gap-3">
+                <h2 className="text-[.9rem] text-zinc-300">Team size: 5</h2>
+                <h2 className="text-[.9rem] text-zinc-300">
+                  Build Investement: ₹ 00
+                </h2>
+                <button
+                  type="button"
+                  className=" gap-3 outline-none border border-zinc-700 bg-zinc-800 hover:border-zinc-600 hover:bg-zinc-700 px-4 py-2 rounded-md text-[.8rem] flex items-center justify-center "
+                >
+                  {PlayStore}
+                  Download now
+                </button>
+              </div>
+            </div>
+            <Cylinder />
+          </div>
+          <Footer />
+        </div>
+      )}
+    </main>
+  );
+};
+
+export default Page;
