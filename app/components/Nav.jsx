@@ -15,9 +15,9 @@ const Nav = () => {
   };
 
   return (
-    <nav className="w-full h-[10dvh] fixed top-0 left-0 z-50 backdrop-blur-md">
+    <nav className="w-full h-[10dvh] fixed top-0 left-0 z-50 backdrop-blur-md px-3 md:px-16 lg:px-20 ">
       <div className="container mx-auto px-4 h-full flex items-center justify-between">
-        <h3 className="flex flex-row items-end justify-center gap-1 text-2xl sm:text-3xl">
+        <h3 id="game_name" className="flex flex-row items-end justify-center gap-1 text-2xl sm:text-3xl">
           Avatar
           <sub className={`${inter.className} text-[.7rem] font-[200]`}>
             BETA

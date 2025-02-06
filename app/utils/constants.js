@@ -1,18 +1,25 @@
+import { AssetsStore, Blender, SketchFab, Unity } from "./SVG";
+
 export const GameResources = [
   {
     name: "Blender",
     use: "3D Component",
-    svg: "",
+    svg: Blender,
   },
   {
     name: "Unity",
     use: "Application",
-    svg: "",
+    svg: Unity,
   },
   {
-    name: "Core",
-    use: "Application",
-    svg: "",
+    name: "SketchFab",
+    use: "Maps",
+    svg: SketchFab,
+  },
+  {
+    name: "Assest Store",
+    use: "Assets",
+    svg: AssetsStore,
   },
 ];
 

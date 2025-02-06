@@ -36,14 +36,14 @@ const Page = () => {
         gradientTransform="matrix(11.64 0 0 22.55 -19615.32 19904.924)"
         gradientUnits="userSpaceOnUse"
       >
-        <stop offset="0" stop-color="#047ed6"></stop>
-        <stop offset="1" stop-color="#50e6ff"></stop>
+        <stop offset="0" stopColor="#047ed6"></stop>
+        <stop offset="1" stopColor="#50e6ff"></stop>
       </linearGradient>
       <path
         fill="url(#jFdG-76_seIEvf-hbjSsaa_rZwnRdJyYqRi_gr1)"
-        fill-rule="evenodd"
+        fillRule="evenodd"
         d="M7.809,4.608c-0.45,0.483-0.708,1.227-0.708,2.194	v34.384c0,0.967,0.258,1.711,0.725,2.177l0.122,0.103L27.214,24.2v-0.433L7.931,4.505L7.809,4.608z"
-        clip-rule="evenodd"
+        clipRule="evenodd"
       ></path>
       <linearGradient
         id="jFdG-76_seIEvf-hbjSsab_rZwnRdJyYqRi_gr2"
@@ -54,14 +54,14 @@ const Page = () => {
         gradientTransform="matrix(9.145 0 0 7.7 -15001.938 6931.316)"
         gradientUnits="userSpaceOnUse"
       >
-        <stop offset="0" stop-color="#ffda1c"></stop>
-        <stop offset="1" stop-color="#feb705"></stop>
+        <stop offset="0" stopColor="#ffda1c"></stop>
+        <stop offset="1" stopColor="#feb705"></stop>
       </linearGradient>
       <path
         fill="url(#jFdG-76_seIEvf-hbjSsab_rZwnRdJyYqRi_gr2)"
-        fill-rule="evenodd"
+        fillRule="evenodd"
         d="M33.623,30.647l-6.426-6.428v-0.45l6.428-6.428	l0.139,0.086l7.603,4.321c2.177,1.227,2.177,3.249,0,4.493l-7.603,4.321C33.762,30.561,33.623,30.647,33.623,30.647z"
-        clip-rule="evenodd"
+        clipRule="evenodd"
       ></path>
       <linearGradient
         id="jFdG-76_seIEvf-hbjSsac_rZwnRdJyYqRi_gr3"
@@ -72,14 +72,14 @@ const Page = () => {
         gradientTransform="matrix(15.02 0 0 11.5775 -25848.943 10324.73)"
         gradientUnits="userSpaceOnUse"
       >
-        <stop offset="0" stop-color="#d9414f"></stop>
-        <stop offset="1" stop-color="#8c193f"></stop>
+        <stop offset="0" stopColor="#d9414f"></stop>
+        <stop offset="1" stopColor="#8c193f"></stop>
       </linearGradient>
       <path
         fill="url(#jFdG-76_seIEvf-hbjSsac_rZwnRdJyYqRi_gr3)"
-        fill-rule="evenodd"
+        fillRule="evenodd"
         d="M33.762,30.561l-6.565-6.567L7.809,43.382	c0.708,0.761,1.9,0.847,3.232,0.103L33.762,30.561"
-        clip-rule="evenodd"
+        clipRule="evenodd"
       ></path>
       <linearGradient
         id="jFdG-76_seIEvf-hbjSsad_rZwnRdJyYqRi_gr4"
@@ -90,14 +90,14 @@ const Page = () => {
         gradientTransform="matrix(15.02 0 0 11.5715 -25848.943 10307.886)"
         gradientUnits="userSpaceOnUse"
       >
-        <stop offset="0" stop-color="#33c481"></stop>
-        <stop offset="1" stop-color="#61e3a7"></stop>
+        <stop offset="0" stopColor="#33c481"></stop>
+        <stop offset="1" stopColor="#61e3a7"></stop>
       </linearGradient>
       <path
         fill="url(#jFdG-76_seIEvf-hbjSsad_rZwnRdJyYqRi_gr4)"
-        fill-rule="evenodd"
+        fillRule="evenodd"
         d="M33.762,17.429L11.041,4.522	c-1.33-0.761-2.524-0.658-3.232,0.103l19.386,19.369L33.762,17.429z"
-        clip-rule="evenodd"
+        clipRule="evenodd"
       ></path>
     </svg>
   );
@@ -157,39 +157,91 @@ const Page = () => {
   }, []);
 
   return (
-    <main className=" w-full h-auto ">
+    // <main className=" w-full h-auto ">
+    //   {isMobile ? "" : <MouseFollower />}
+    //   {isLoading ? (
+    //     <Loader />
+    //   ) : (
+    //     <div className=" w-full min-h-screen flex flex-col items-center justify-center gap-4 ">
+    //       <Nav />
+    //       <div className="w-full h-auto overflow-hidden flex flex-col items-center justify-start relative">
+    //         <div className="z-40 px-28 mt-48 h-[max-content] w-full flex flex-col lg:flex-row items-start justify-between gap-8">
+    //           <div className="h-full w-[max-content] flex flex-col items-start justify-center gap-6">
+    //             <h2 className="text-[1.2rem]">Team Name</h2>
+    //             <h1
+    //               id="team_name"
+    //               className="text-[4rem] h-[10dvh]"
+    //               ref={type1Ref}
+    //             ></h1>
+    //             <p className="w-[25dvw] text-wrap text-[.8rem] font-[200]">
+    //               Venture into stunning realms, slay monsters, and conquer the
+    //               unknown—Unleash your power in Unity's masterpiece!
+    //             </p>
+    //             <div className="h-[max-content] w-[max-content] flex flex-col items-start justify-center gap-2">
+    //               <h2 className="text-[1.2rem]">Build using</h2>
+    //               <p className="text-[3rem] h-[10dvh]" ref={type2Ref}></p>
+    //             </div>
+    //           </div>
+    //           <div className="h-full w-[max-content] flex flex-col items-start justify-center gap-3">
+    //             <h2 className="text-[.9rem] text-zinc-300">Team size: 5</h2>
+    //             <h2 className="text-[.9rem] text-zinc-300">
+    //               Build Investement: ₹ 00
+    //             </h2>
+    //             <button
+    //               type="button"
+    //               className=" gap-3 outline-none border border-zinc-700 bg-zinc-800 hover:border-zinc-600 hover:bg-zinc-700 px-4 py-2 rounded-md text-[.8rem] flex items-center justify-center "
+    //             >
+    //               {PlayStore}
+    //               Download now
+    //             </button>
+    //           </div>
+    //         </div>
+    //         {/* <Cylinder /> */}
+    //       </div>
+    //       <Resources />
+    //       <Footer />
+    //     </div>
+    //   )}
+    // </main>
+
+    <main className="w-full h-auto">
       {isMobile ? "" : <MouseFollower />}
       {isLoading ? (
         <Loader />
       ) : (
-        <div className=" w-full h-[max-content] flex flex-col items-center justify-center gap-4 ">
+        <div className="w-full min-h-screen flex flex-col items-center justify-center gap-4">
           <Nav />
-          <div className="w-full h-[100dvh] overflow-hidden flex flex-col items-center justify-start relative">
-            <div className="z-40 px-28 absolute top-0 left-0 h-full w-full flex items-start justify-between gap-8">
-              <div className="h-full w-[max-content] flex flex-col items-start justify-center gap-6">
-                <h2 className="text-[1.2rem]">Team Name</h2>
+          <div className="w-full h-auto overflow-hidden flex flex-col items-center justify-start relative">
+            <div className="z-40 px-4 lg:px-28 mt-28 lg:mt-60 h-[max-content] w-full flex flex-col items-start lg:flex-row lg:items-start justify-between gap-8">
+              <div className="h-full w-full lg:w-[max-content] flex flex-col items-start justify-center gap-4 lg:gap-6">
+                <h2 className="text-base lg:text-[1.2rem]">Team Name</h2>
                 <h1
                   id="team_name"
-                  className="text-[4rem] h-[10dvh]"
+                  className="text-3xl lg:text-[4rem] h-[10dvh] lg:mt-6 "
                   ref={type1Ref}
                 ></h1>
-                <p className="w-[25dvw] text-wrap text-[.8rem] font-[200]">
+                <p className="w-full lg:w-[25dvw] text-sm lg:text-[.8rem] font-[200]">
                   Venture into stunning realms, slay monsters, and conquer the
                   unknown—Unleash your power in Unity's masterpiece!
                 </p>
-                <div className="h-[max-content] w-[max-content] flex flex-col items-start justify-center gap-2">
-                  <h2 className="text-[1.2rem]">Build using</h2>
-                  <p className="text-[3rem] h-[10dvh]" ref={type2Ref}></p>
+                <div className="w-full lg:w-[max-content] flex flex-col items-start justify-center gap-2">
+                  <h2 className="text-base lg:text-[1.2rem]">Build using</h2>
+                  <p
+                    className="text-2xl lg:text-[3rem] h-[10dvh] lg:mt-6 "
+                    ref={type2Ref}
+                  ></p>
                 </div>
               </div>
-              <div className="h-full w-[max-content] flex flex-col items-start justify-center gap-3">
-                <h2 className="text-[.9rem] text-zinc-300">Team size: 5</h2>
-                <h2 className="text-[.9rem] text-zinc-300">
-                  Build Investement: ₹ 00
+              <div className="h-full w-full lg:w-[max-content] flex flex-col items-start justify-center gap-3">
+                <h2 className="text-sm lg:text-[.9rem] text-zinc-300">
+                  Team size: 5
+                </h2>
+                <h2 className="text-sm lg:text-[.9rem] text-zinc-300">
+                  Build Investment: ₹ 00
                 </h2>
                 <button
                   type="button"
-                  className=" gap-3 outline-none border border-zinc-700 bg-zinc-800 hover:border-zinc-600 hover:bg-zinc-700 px-4 py-2 rounded-md text-[.8rem] flex items-center justify-center "
+                  className="w-full lg:w-auto gap-3 outline-none border border-zinc-700 bg-zinc-800 hover:border-zinc-600 hover:bg-zinc-700 px-4 py-2 rounded-md text-sm lg:text-[.8rem] flex items-center justify-center"
                 >
                   {PlayStore}
                   Download now
