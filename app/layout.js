@@ -1,9 +1,7 @@
 import { Inter } from "next/font/google";
 import "./globals.css";
-import dotenv from "dotenv";
 import { ToastContainer } from "react-toastify";
 
-dotenv.config();
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {

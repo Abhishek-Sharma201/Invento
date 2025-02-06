@@ -4,8 +4,12 @@ import Footer from "@/app/components/Footer";
 import Nav from "@/app/components/Nav";
 import React, { useState } from "react";
 import { toast } from "react-toastify";
+import dotenv from "dotenv";
+
+dotenv.config();
 
 const page = () => {
+  const apiURL = process.env.API_URL;
   const [data, setData] = useState({
     name: "",
     email: "",
@@ -23,7 +27,7 @@ const page = () => {
     e.preventDefault();
     console.log(data);
 
-    const res = await fetch(`${process.env.API_URL}/api/form/post`, {
+    const res = await fetch(`${apiURL}/api/form/post`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(data),
