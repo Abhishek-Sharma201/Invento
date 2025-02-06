@@ -8,7 +8,7 @@ const Footer = () => {
     <div className=" h-[10dvh] w-full flex items-center justify-between px-3 lg:px-8 gap-3 ">
       <p className=" text-[.5rem] font-[300] lg:text-[.7rem] ">
         Note: This is a <span className=" text-[.5rem] font-[400] lg:text-[.7rem] ">BETA</span>{" "}
-        version on the Game.
+        version of the Game.
       </p>
       <h2
         id="team_name"

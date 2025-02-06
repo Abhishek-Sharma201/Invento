@@ -5,11 +5,8 @@ import Typed from "typed.js";
 import Cylinder from "./components/3D/Cylinder";
 import MouseFollower from "./components/MouseFollower";
 import Loader from "./components/Loader";
-import Link from "next/link";
-import Image from "next/image";
 import Footer from "./components/Footer";
 import Nav from "./components/Nav";
-import { Download } from "lucide-react";
 import Resources from "./components/Resources";
 
 const Page = () => {
@@ -204,14 +201,14 @@ const Page = () => {
     //   )}
     // </main>
 
-    <main className="w-full h-auto">
+    <main className="w-full h-auto bg-black ">
       {isMobile ? "" : <MouseFollower />}
       {isLoading ? (
         <Loader />
       ) : (
         <div className="w-full min-h-screen flex flex-col items-center justify-center gap-4">
           <Nav />
-          <div className="w-full h-auto overflow-hidden flex flex-col items-center justify-start relative">
+          <div className="w-full h-[100dvh] overflow-hidden flex flex-col items-center justify-start relative">
             <div className="z-40 px-4 lg:px-28 mt-28 lg:mt-60 h-[max-content] w-full flex flex-col items-start lg:flex-row lg:items-start justify-between gap-8">
               <div className="h-full w-full lg:w-[max-content] flex flex-col items-start justify-center gap-4 lg:gap-6">
                 <h2 className="text-base lg:text-[1.2rem]">Team Name</h2>
