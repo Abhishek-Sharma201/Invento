@@ -10,6 +10,7 @@ import Image from "next/image";
 import Footer from "./components/Footer";
 import Nav from "./components/Nav";
 import { Download } from "lucide-react";
+import Resources from "./components/Resources";
 
 const Page = () => {
   const type1Ref = useRef(null);
@@ -195,8 +196,9 @@ const Page = () => {
                 </button>
               </div>
             </div>
-            <Cylinder />
+            {/* <Cylinder /> */}
           </div>
+          <Resources />
           <Footer />
         </div>
       )}

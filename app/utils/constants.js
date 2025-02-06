@@ -2,16 +2,16 @@ export const GameResources = [
   {
     name: "Blender",
     use: "3D Component",
-    logo: "",
+    svg: "",
   },
   {
     name: "Unity",
     use: "Application",
-    logo: "",
+    svg: "",
   },
   {
     name: "Core",
-    use: "****",
-    logo: "",
+    use: "Application",
+    svg: "",
   },
 ];

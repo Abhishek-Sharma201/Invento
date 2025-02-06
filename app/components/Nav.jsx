@@ -6,7 +6,10 @@ const inter = Inter({ subsets: ["latin"] });
 
 const Nav = () => {
   return (
-    <div id="nav" className="w-full h-[10dvh] flex items-center justify-between px-28 fixed top-0 left-0 z-50 backdrop-blur-md ">
+    <div
+      id="nav"
+      className="w-full h-[10dvh] flex items-center justify-between px-28 fixed top-0 left-0 z-50 backdrop-blur-md "
+    >
       <h3
         id="game_name"
         className=" flex flex-row items-end justify-center gap-1 text-[2rem] "
@@ -28,10 +31,10 @@ const Nav = () => {
           Sponcers
         </Link>
         <Link
-          href={"#"}
-          className=" hover:border-b border-b-white transition-all "
+          href={"/feedback"}
+          className=" transition-all bg-zinc-900 border border-zinc-700 rounded-md px-4 py-2 "
         >
-          Team
+          Feedback
         </Link>
       </ul>
     </div>
