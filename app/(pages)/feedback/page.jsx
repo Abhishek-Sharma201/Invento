@@ -5,11 +5,11 @@ import Nav from "@/app/components/Nav";
 import React, { useState } from "react";
 import { toast } from "react-toastify";
 import dotenv from "dotenv";
+import { apiURL } from "@/app/utils/constants";
 
 dotenv.config();
 
 const page = () => {
-  const apiURL = process.env.API_URL;
   const [data, setData] = useState({
     name: "",
     email: "",
@@ -33,13 +33,13 @@ const page = () => {
       body: JSON.stringify(data),
     });
 
-    const json = await res.json();
+    const j = await res.json();
 
-    if (!res.ok) throw new toast.error(`${json.message}`);
+    if (!res.ok) toast.error(`${j.message}`);
 
-    console.log(json.message);
+    console.log(j.message);
 
-    toast.success(`${json.message}`);
+    toast.success(`${j.message}`);
 
     setData({
       name: "",

@@ -15,3 +15,5 @@ export const GameResources = [
     svg: "",
   },
 ];
+
+export const apiURL = "https://invento-backend-bwjj.onrender.com";
