@@ -9,54 +9,6 @@ import React, { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 
 const page = () => {
-  const dummy = [
-    {
-      name: "test",
-      email: "test@gmail.com",
-      message: "Test message",
-    },
-    {
-      name: "test",
-      email: "test@gmail.com",
-      message: "Test message",
-    },
-    {
-      name: "test",
-      email: "test@gmail.com",
-      message: "Test message",
-    },
-    {
-      name: "test",
-      email: "test@gmail.com",
-      message: "Test message",
-    },
-    {
-      name: "test",
-      email: "test@gmail.com",
-      message: "Test message",
-    },
-    {
-      name: "test",
-      email: "test@gmail.com",
-      message: "Test message",
-    },
-    {
-      name: "test",
-      email: "test@gmail.com",
-      message: "Test message",
-    },
-    {
-      name: "test",
-      email: "test@gmail.com",
-      message: "Test message",
-    },
-    {
-      name: "test",
-      email: "test@gmail.com",
-      message: "Test message",
-    },
-  ];
-
   const [data, setData] = useState([]);
 
   const [isLoading, setIsLoading] = useState(false);
@@ -97,7 +49,7 @@ const page = () => {
           <Loader />
         ) : (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 px-6 md:px-16 lg:px-28">
-            {dummy.map((data, i) => (
+            {data.map((data, i) => (
               <ResponseCard {...data} key={i} />
             ))}
           </div>
