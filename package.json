@@ -9,10 +9,12 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@react-spring/web": "^9.7.5",
     "@react-three/drei": "^9.120.6",
     "@react-three/fiber": "^8.17.12",
     "@react-three/postprocessing": "^2.16.6",
     "dotenv": "^16.4.7",
+    "framer-motion": "^12.4.1",
     "gsap": "^3.12.5",
     "leva": "^0.9.35",
     "lucide-react": "^0.471.0",

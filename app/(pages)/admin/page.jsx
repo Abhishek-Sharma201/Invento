@@ -49,9 +49,9 @@ const page = () => {
           <Loader />
         ) : (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 px-6 md:px-16 lg:px-28">
-            {data.map((data, i) => (
-              <ResponseCard {...data} key={i} />
-            ))}
+            {data.length === 0
+              ? toast.warn("No response added")
+              : data.map((data, i) => <ResponseCard {...data} key={i} />)}
           </div>
         )}
       </div>

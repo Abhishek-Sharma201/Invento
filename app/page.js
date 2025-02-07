@@ -8,6 +8,10 @@ import Loader from "./components/Loader";
 import Footer from "./components/Footer";
 import Nav from "./components/Nav";
 import Resources from "./components/Resources";
+import TrueFocus from "./components/bits/TrueFocus";
+import CountUp from "./components/bits/CountUp";
+import ShinyText from "./components/bits/ShinyText";
+import Link from "next/link";
 
 const Page = () => {
   const type1Ref = useRef(null);
@@ -121,7 +125,7 @@ const Page = () => {
     let typed2;
     if (type2Ref.current) {
       typed2 = new Typed(type2Ref.current, {
-        strings: ["Unity", "Blender", "Sketch-Fab", "Core"],
+        strings: ["Unity", "Blender", "Sketch Fab", "Assets Store"],
         typeSpeed: 100,
         backSpeed: 50,
         startDelay: 1000,
@@ -154,53 +158,6 @@ const Page = () => {
   }, []);
 
   return (
-    // <main className=" w-full h-auto ">
-    //   {isMobile ? "" : <MouseFollower />}
-    //   {isLoading ? (
-    //     <Loader />
-    //   ) : (
-    //     <div className=" w-full min-h-screen flex flex-col items-center justify-center gap-4 ">
-    //       <Nav />
-    //       <div className="w-full h-auto overflow-hidden flex flex-col items-center justify-start relative">
-    //         <div className="z-40 px-28 mt-48 h-[max-content] w-full flex flex-col lg:flex-row items-start justify-between gap-8">
-    //           <div className="h-full w-[max-content] flex flex-col items-start justify-center gap-6">
-    //             <h2 className="text-[1.2rem]">Team Name</h2>
-    //             <h1
-    //               id="team_name"
-    //               className="text-[4rem] h-[10dvh]"
-    //               ref={type1Ref}
-    //             ></h1>
-    //             <p className="w-[25dvw] text-wrap text-[.8rem] font-[200]">
-    //               Venture into stunning realms, slay monsters, and conquer the
-    //               unknown—Unleash your power in Unity's masterpiece!
-    //             </p>
-    //             <div className="h-[max-content] w-[max-content] flex flex-col items-start justify-center gap-2">
-    //               <h2 className="text-[1.2rem]">Build using</h2>
-    //               <p className="text-[3rem] h-[10dvh]" ref={type2Ref}></p>
-    //             </div>
-    //           </div>
-    //           <div className="h-full w-[max-content] flex flex-col items-start justify-center gap-3">
-    //             <h2 className="text-[.9rem] text-zinc-300">Team size: 5</h2>
-    //             <h2 className="text-[.9rem] text-zinc-300">
-    //               Build Investement: ₹ 00
-    //             </h2>
-    //             <button
-    //               type="button"
-    //               className=" gap-3 outline-none border border-zinc-700 bg-zinc-800 hover:border-zinc-600 hover:bg-zinc-700 px-4 py-2 rounded-md text-[.8rem] flex items-center justify-center "
-    //             >
-    //               {PlayStore}
-    //               Download now
-    //             </button>
-    //           </div>
-    //         </div>
-    //         {/* <Cylinder /> */}
-    //       </div>
-    //       <Resources />
-    //       <Footer />
-    //     </div>
-    //   )}
-    // </main>
-
     <main className="w-full h-auto bg-black ">
       {isMobile ? "" : <MouseFollower />}
       {isLoading ? (
@@ -208,15 +165,18 @@ const Page = () => {
       ) : (
         <div className="w-full min-h-screen flex flex-col items-center justify-center gap-4">
           <Nav />
-          <div className="w-full h-[100dvh] overflow-hidden flex flex-col items-center justify-start relative">
+          <div className="w-full h-[100dvh] overflow-hidden flex flex-col items-center justify-start relative banner">
             <div className="z-40 px-4 lg:px-28 mt-28 lg:mt-60 h-[max-content] w-full flex flex-col items-start lg:flex-row lg:items-start justify-between gap-8">
-              <div className="h-full w-full lg:w-[max-content] flex flex-col items-start justify-center gap-4 lg:gap-6">
+              <div className="h-full w-full lg:w-[max-content] flex flex-col items-start justify-center gap-4 lg:gap-6 left">
                 <h2 className="text-base lg:text-[1.2rem]">Team Name</h2>
-                <h1
-                  id="team_name"
-                  className="text-3xl lg:text-[4rem] h-[10dvh] lg:mt-6 "
-                  ref={type1Ref}
-                ></h1>
+                <TrueFocus
+                  sentence="999 Studio"
+                  manualMode={false}
+                  blurAmount={5}
+                  borderColor="blue"
+                  animationDuration={1}
+                  pauseBetweenAnimations={0.4}
+                />
                 <p className="w-full lg:w-[25dvw] text-sm lg:text-[.8rem] font-[200]">
                   Venture into stunning realms, slay monsters, and conquer the
                   unknown—Unleash your power in Unity's masterpiece!
@@ -230,18 +190,37 @@ const Page = () => {
                 </div>
               </div>
               <div className="h-full w-full lg:w-[max-content] flex flex-col items-start justify-center gap-3">
-                <h2 className="text-sm lg:text-[.9rem] text-zinc-300">
+                <h2 className="text-sm lg:text-[.9rem] text-zinc-100">
                   Team size: 5
                 </h2>
-                <h2 className="text-sm lg:text-[.9rem] text-zinc-300">
-                  Build Investment: ₹ 00
+                <h2 className="text-sm lg:text-[.9rem] text-zinc-100">
+                  Build Investment: ₹{" "}
+                  <CountUp
+                    from={0}
+                    to={100}
+                    separator=","
+                    direction="up"
+                    duration={1}
+                    className="count-up-text"
+                  />
                 </h2>
+                <Link
+                  href="/feedback"
+                  className="feedback w-full lg:w-auto gap-3 outline-none border border-zinc-300/6 hover:border-zinc-600 hover:bg-zinc-700 px-4 py-2 rounded-md text-sm lg:text-[.8rem]  flex items-center justify-center"
+                >
+                  Feedback
+                </Link>
                 <button
                   type="button"
-                  className="w-full lg:w-auto gap-3 outline-none border border-zinc-700 bg-zinc-800 hover:border-zinc-600 hover:bg-zinc-700 px-4 py-2 rounded-md text-sm lg:text-[.8rem] flex items-center justify-center"
+                  className="download w-full lg:w-auto gap-3 outline-none border border-zinc-300/6 hover:border-zinc-600 hover:bg-zinc-700 px-4 py-2 rounded-md text-sm lg:text-[.8rem] flex items-center justify-center"
                 >
                   {PlayStore}
-                  Download now
+                  <ShinyText
+                    text="Download now"
+                    disabled={false}
+                    speed={3}
+                    className="custom-class"
+                  />
                 </button>
               </div>
             </div>

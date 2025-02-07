@@ -23,4 +23,32 @@ export const GameResources = [
   },
 ];
 
+export const TeamData = [
+  {
+    name: "Sujal Adak",
+    role: "Leader",
+    work: "Component resource",
+  },
+  {
+    name: "Shrikant Jadhav",
+    role: "Member",
+    work: "Animations",
+  },
+  {
+    name: "Abhishek Sharma",
+    role: "Member",
+    work: "Coding stuff",
+  },
+  {
+    name: "Rohan Saroj",
+    role: "Member",
+    work: "Controls",
+  },
+  {
+    name: "Sourav Pant",
+    role: "Member",
+    work: "Support",
+  },
+];
+
 export const apiURL = "https://invento-backend-bwjj.onrender.com";
