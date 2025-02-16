@@ -29,7 +29,7 @@ const MouseFollower = () => {
         borderRadius: "50%",
         pointerEvents: "none",
         transform: "translate(-50%, -50%)",
-        zIndex: 1000,
+        zIndex: 999,
         mixBlendMode: "difference",
       }}
     />

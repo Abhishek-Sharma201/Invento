@@ -8,7 +8,7 @@ const inter = Inter({ subsets: ["latin"] });
 
 const Footer = () => {
   return (
-    <div className=" h-[10dvh] w-full flex lg:flex-row items-center justify-between px-3 lg:px-8 gap-3 ">
+    <div className=" h-[max-content] lg:h-[10dvh] w-full flex flex-col lg:flex-row items-center justify-between px-3 lg:px-8 gap-3 ">
       <p className=" text-[.5rem] font-[300] lg:text-[.7rem] ">
         Note: This is a{" "}
         <span className=" text-[.5rem] font-[400] lg:text-[.7rem] text-yellow-400 ">
@@ -37,7 +37,7 @@ const Footer = () => {
           </svg>
         </Link>
         <Link
-          href={"https://www.youtube.com/@999-Gaming-Studio"}
+          href={"https://www.instagram.com/the.999.studio/"}
           className=" border-b-0 hover:border-b-2 border-yellow-500 "
         >
           <svg
@@ -94,7 +94,7 @@ const Footer = () => {
           </svg>
         </Link>
         <Link
-          href={"https://www.youtube.com/@999-Gaming-Studio"}
+          href={"https://discord.gg/Aw9dzuxN"}
           className=" border-b-0 hover:border-b-2 border-yellow-500 "
         >
           <svg
@@ -112,7 +112,7 @@ const Footer = () => {
           </svg>
         </Link>
         <Link
-          href={"https://www.youtube.com/@999-Gaming-Studio"}
+          href={"https://t.me/the999studio"}
           className=" border-b-0 hover:border-b-2 border-yellow-500 "
         >
           <svg

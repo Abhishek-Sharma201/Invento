@@ -178,10 +178,10 @@ const Page = () => {
                 </div>
               </div>
               <div className="h-full w-full lg:w-[max-content] flex flex-col items-start justify-center gap-3">
-                <h2 className="text-sm lg:text-[.9rem] text-zinc-100">
+                {/* <h2 className="text-sm lg:text-[.9rem] text-zinc-100">
                   Team size: 5
-                </h2>
-                <h2 className="text-sm lg:text-[.9rem] text-zinc-100">
+                </h2> */}
+                {/* <h2 className="text-sm lg:text-[.9rem] text-zinc-100">
                   Build Investment: ₹
                   <CountUp
                     from={0}
@@ -191,7 +191,7 @@ const Page = () => {
                     duration={1}
                     className="count-up-text"
                   />
-                </h2>
+                </h2> */}
                 <Link
                   href="/feedback"
                   className="feedback w-full lg:w-auto gap-3 outline-none border border-zinc-300/6 hover:border-zinc-600 hover:bg-zinc-700 px-4 py-2 rounded-md text-sm lg:text-[.8rem]  flex items-center justify-center"
