@@ -1,4 +1,10 @@
-const ShinyText = ({ text, disabled = false, speed = 5, className = "" }) => {
+const ShinyText = ({
+  text,
+  disabled = false,
+  speed = 5,
+  className = "",
+  id,
+}) => {
   const animationDuration = `${speed}s`;
 
   return (
@@ -13,6 +19,7 @@ const ShinyText = ({ text, disabled = false, speed = 5, className = "" }) => {
         WebkitBackgroundClip: "text",
         animationDuration: animationDuration,
       }}
+      id={id}
     >
       {text}
     </div>

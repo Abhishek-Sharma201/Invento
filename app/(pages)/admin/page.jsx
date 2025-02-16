@@ -5,59 +5,68 @@ import Loader from "@/app/components/Loader";
 import Nav from "@/app/components/Nav";
 import ResponseCard from "@/app/components/ResponseCard";
 import { apiURL } from "@/app/utils/constants";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 import { toast } from "react-toastify";
 
-const page = () => {
+const Page = () => {
   const [data, setData] = useState([]);
-
   const [isLoading, setIsLoading] = useState(false);
+  const [hasError, setHasError] = useState(false); // New error state
 
-  const fetchData = async () => {
+  const fetchData = useCallback(async () => {
     try {
       setIsLoading(true);
+      setHasError(false); // Reset error state on new fetch
       const res = await fetch(`${apiURL}/api/form/get`, {
         method: "GET",
         headers: { "Content-Type": "application/json" },
       });
 
-      const j = await res.json();
+      if (!res.ok) {
+        const errorData = await res.json();
+        throw new Error(errorData.message || "Failed to fetch data");
+      }
 
-      if (!res.ok) throw new Error(`${j.message}`);
-
-      setData(j.data);
-
-      setIsLoading(false);
-
-      toast.success(`${j.message}`);
+      const responseData = await res.json();
+      setData(responseData.data || []);
+      toast.success(responseData.message);
     } catch (error) {
-      toast.error(`${error}`);
+      setHasError(true); // Set error state on failure
+      toast.error(error.message || "An error occurred");
     } finally {
       setIsLoading(false);
     }
-  };
-
-  useEffect(() => {
-    fetchData();
   }, []);
 
+  useEffect(() => {
+    const controller = new AbortController();
+    fetchData();
+    return () => controller.abort();
+  }, [fetchData]);
+
+  useEffect(() => {
+    // Only show warning if there's no error and no data
+    if (data.length === 0 && !isLoading && !hasError) {
+      toast.warn("No responses found");
+    }
+  }, [data, isLoading, hasError]); // Include hasError in dependencies
+
   return (
-    <div className="flex flex-col min-h-screen">
+    <div className="flex flex-col min-h-screen bg-black">
       <Nav />
-      <div className="flex-grow w-full sm:px-6 lg:px-8 py-8 mt-28 ">
+      <div className="flex-grow w-full sm:px-6 lg:px-8 py-8 mt-28">
         {isLoading ? (
           <Loader />
         ) : (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 px-6 md:px-16 lg:px-28">
-            {data.length === 0
-              ? toast.warn("No response added")
-              : data.map((data, i) => <ResponseCard {...data} key={i} />)}
+            {data.map((item, index) => (
+              <ResponseCard {...item} key={index} />
+            ))}
           </div>
         )}
       </div>
-      <Footer />
     </div>
   );
 };
 
-export default page;
+export default Page;

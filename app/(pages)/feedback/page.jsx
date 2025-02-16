@@ -2,60 +2,68 @@
 
 import Footer from "@/app/components/Footer";
 import Nav from "@/app/components/Nav";
-import React, { useState } from "react";
+import React, { useState, useCallback } from "react";
 import { toast } from "react-toastify";
-import dotenv from "dotenv";
 import { apiURL } from "@/app/utils/constants";
 
-dotenv.config();
-
-const page = () => {
+const AdminPage = () => {
   const [data, setData] = useState({
     name: "",
     email: "",
     message: "",
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleChange = (e) => {
-    setData({
-      ...data,
+  const handleChange = useCallback((e) => {
+    setData((prev) => ({
+      ...prev,
       [e.target.name]: e.target.value,
-    });
-  };
+    }));
+  }, []);
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    console.log(data);
+  const handleSubmit = useCallback(
+    async (e) => {
+      e.preventDefault();
+      if (isSubmitting) return;
 
-    const res = await fetch(`${apiURL}/api/form/post`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(data),
-    });
+      const controller = new AbortController();
+      setIsSubmitting(true);
 
-    const j = await res.json();
+      try {
+        const res = await fetch(`${apiURL}/api/form/post`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(data),
+          signal: controller.signal,
+        });
 
-    if (!res.ok) toast.error(`${j.message}`);
+        if (!res.ok) {
+          const errorData = await res.json();
+          throw new Error(errorData.message || "Submission failed");
+        }
 
-    console.log(j.message);
-
-    toast.success(`${j.message}`);
-
-    setData({
-      name: "",
-      email: "",
-      message: "",
-    });
-  };
+        const responseData = await res.json();
+        toast.success(responseData.message);
+        setData({ name: "", email: "", message: "" });
+      } catch (error) {
+        if (error.name !== "AbortError") {
+          toast.error(error.message || "An error occurred during submission");
+        }
+      } finally {
+        setIsSubmitting(false);
+      }
+    },
+    [data, isSubmitting]
+  );
 
   return (
-    <div className=" h-[100dvh] w-full flex flex-col items-center justify-between gap-4 bg-black ">
+    <div className="min-h-screen w-full flex flex-col items-center justify-between gap-4 bg-black">
       <Nav />
       <form
         onSubmit={handleSubmit}
-        className=" mt-[15rem] h-[max-content] w-[max-content] flex flex-col items-start justify-center gap-4 p-4 rounded-md border border-zinc-800 bg-zinc-950 "
+        className="mt-[15rem] h-[max-content] w-[max-content] flex flex-col items-start justify-center gap-4 p-4 rounded-md border border-zinc-800 bg-zinc-950"
       >
-        <h1 className=" text-white text-[1.3rem] font-[500] ">Feedback</h1>
+        <h1 className="text-white text-[1.3rem] font-[500]">Feedback</h1>
         <div className="h-[max-content] w-[max-content] flex flex-col items-center justify-center gap-4">
           <input
             type="text"
@@ -64,8 +72,8 @@ const page = () => {
             placeholder="name"
             onChange={handleChange}
             value={data.name}
-            className=" h-[6dvh] w-[250px] rounded-md outline-none border border-zinc-800 bg-transparent px-3 text-white placeholder:text-white text-[.8rem] "
-            required={true}
+            className="h-[6dvh] w-[250px] rounded-md outline-none border border-zinc-800 bg-transparent px-3 text-white placeholder:text-white text-[.8rem]"
+            required
           />
           <input
             type="email"
@@ -74,8 +82,8 @@ const page = () => {
             placeholder="email"
             onChange={handleChange}
             value={data.email}
-            className=" h-[6dvh] w-[250px] rounded-md outline-none border border-zinc-800 bg-transparent px-3 text-white placeholder:text-white text-[.8rem] "
-            required={true}
+            className="h-[6dvh] w-[250px] rounded-md outline-none border border-zinc-800 bg-transparent px-3 text-white placeholder:text-white text-[.8rem]"
+            required
           />
           <input
             type="text"
@@ -84,15 +92,16 @@ const page = () => {
             placeholder="message"
             onChange={handleChange}
             value={data.message}
-            className=" h-[6dvh] w-[250px] rounded-md outline-none border border-zinc-800 bg-transparent px-3 text-white placeholder:text-white text-[.8rem] "
-            required={true}
+            className="h-[6dvh] w-[250px] rounded-md outline-none border border-zinc-800 bg-transparent px-3 text-white placeholder:text-white text-[.8rem]"
+            required
           />
         </div>
         <button
           type="submit"
-          className=" h-[max-content] w-full rounded-md outline-none border border-zinc-700 bg-blue-600 px-4 py-2 text-white text-[.9rem] "
+          disabled={isSubmitting}
+          className="h-[max-content] w-full rounded-md outline-none border border-zinc-700 bg-blue-600 px-4 py-2 text-white text-[.9rem] disabled:opacity-50 disabled:cursor-not-allowed"
         >
-          Submit
+          {isSubmitting ? "Submitting..." : "Submit"}
         </button>
       </form>
       <Footer />
@@ -100,4 +109,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default AdminPage;

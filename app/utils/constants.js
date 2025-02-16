@@ -22,7 +22,6 @@ export const GameResources = [
     svg: AssetsStore,
   },
 ];
-
 export const TeamData = [
   {
     name: "Sujal Adak",
@@ -50,5 +49,23 @@ export const TeamData = [
     work: "Support",
   },
 ];
-
 export const apiURL = "https://invento-backend-bwjj.onrender.com";
+
+export const AvatarData = {
+  name: "Avatar",
+  desc: "Venture into stunning realms, slay monsters, and conquer the unknown—Unleash your power in Unity's masterpiece!",
+  isBeta: true,
+  downloadLink: "#",
+  buildUsing: ["Unity", "Blender", "Sketch-Fab", "Assest Store"],
+  buildInvestement: 100,
+  images: { main: "/assets/i1.jpg", list: [] },
+};
+
+export const GameData = [
+  {
+    image: "/assets/i1.jpg",
+    title: "Avatar",
+    desc: "desc of the game",
+    link: "/avatar",
+  },
+];

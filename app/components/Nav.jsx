@@ -4,6 +4,7 @@ import { useState } from "react";
 import { Inter } from "next/font/google";
 import Link from "next/link";
 import { Menu, X } from "lucide-react";
+import Image from "next/image";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -15,24 +16,21 @@ const Nav = () => {
   };
 
   return (
-    <nav className="w-full h-[10dvh] fixed top-0 left-0 z-50 backdrop-blur-md px-3 md:px-16 lg:px-20 ">
+    <nav className="w-full h-[10dvh] fixed top-0 left-0 backdrop-blur-[100px] z-50 px-3 md:px-16 lg:px-20 ">
       <div className="container mx-auto px-4 h-full flex items-center justify-between">
-        <h3
-          id="game_name"
-          className="flex flex-row items-end justify-center gap-1 text-2xl sm:text-3xl"
-        >
-          Avatar
-          <sub className={`${inter.className} text-[.7rem] font-[500]`}>
-            BETA
-          </sub>
-        </h3>
+        <div className="flex flex-row items-center justify-center gap-1 text-2xl sm:text-3xl">
+          <Image src={"/assets/logo.png"} alt="logo" height={50} width={50} />
+          <h3 id="team_name" className="text-[1rem]">
+            Studio
+          </h3>
+        </div>
 
         <div className="hidden md:flex items-center justify-center gap-8 text-sm">
           <Link
-            href="#resources"
+            href="/avatar"
             className="hover:border-b border-b-white transition-all"
           >
-            Resources
+            Avatar
           </Link>
           <Link
             href="#"
