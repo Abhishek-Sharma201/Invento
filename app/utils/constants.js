@@ -26,27 +26,27 @@ export const TeamData = [
   {
     name: "Sujal Adak",
     role: "Leader",
-    work: "Component resource",
+    work: "Designer",
   },
   {
     name: "Shrikant Jadhav",
     role: "Member",
-    work: "Animations",
+    work: "Controls",
   },
   {
     name: "Abhishek Sharma",
     role: "Member",
-    work: "Coding stuff",
+    work: "Score management",
   },
   {
     name: "Rohan Saroj",
     role: "Member",
-    work: "Controls",
+    work: "Animations",
   },
   {
     name: "Sourav Pant",
     role: "Member",
-    work: "Support",
+    work: "Story line",
   },
 ];
 export const apiURL = "https://invento-backend-bwjj.onrender.com";
@@ -55,7 +55,7 @@ export const AvatarData = {
   name: "Avatar",
   desc: "Venture into stunning realms, slay monsters, and conquer the unknown—Unleash your power in Unity's masterpiece!",
   isBeta: true,
-  downloadLink: "#",
+  downloadLink: "https://999studio.itch.io/",
   buildUsing: ["Unity", "Blender", "Sketch-Fab", "Assest Store"],
   buildInvestement: 100,
   images: { main: "/assets/i1.jpg", list: [] },
