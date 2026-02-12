@@ -57,7 +57,7 @@ export const AvatarData = {
 dangerous obstacles and completing story-driven tasks to unlock portals and progress
 through the journey.`,
   isBeta: true,
-  downloadLink: "https://999studio.itch.io/",
+  downloadLink: "https://999studio.itch.io/tripo-the-lost-path",
   buildUsing: ["Unity", "Blender", "Sketch-Fab", "Assest Store"],
   buildInvestement: 100,
   images: { main: "/assets/Banner.jpeg", list: [] },
