@@ -30,11 +30,11 @@ const Nav = () => {
             href="/avatar"
             className=" py-2 px-4 text-white rounded-md bg-blue-700 "
           >
-            Avatar
+            Tripo
           </Link>
           <Link
             href="/feedback"
-            className=" py-2 px-4 text-white rounded-md bg-zinc-800 "
+            className=" py-2 px-4 text-white rounded-md glass "
           >
             Feedback
           </Link>
@@ -49,7 +49,7 @@ const Nav = () => {
         <div className="md:hidden absolute top-[10dvh] left-0 w-full bg-zinc-900 border-t border-zinc-700">
           <div className="container mx-auto px-4 py-4 flex flex-col gap-4">
             <Link href="/avatar" className="hover:text-gray-300 transition-all">
-              Avatar
+              Tripo
             </Link>
             <Link
               href="/feedback"

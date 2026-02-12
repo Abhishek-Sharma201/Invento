@@ -1,4 +1,7 @@
 import { AssetsStore, Blender, SketchFab, Unity } from "./SVG";
+import dotenv from "dotenv";
+
+dotenv.config();
 
 export const GameResources = [
   {
@@ -26,39 +29,38 @@ export const TeamData = [
   {
     name: "Sujal Adak",
     role: "Leader",
-    work: "Designer",
+    work: "Game Designer",
   },
   {
     name: "Shrikant Jadhav",
     role: "Member",
-    work: "Controls",
+    work: "Level Designer",
   },
   {
     name: "Abhishek Sharma",
     role: "Member",
-    work: "Score management",
+    work: "Web Maintainer/Programmer",
   },
   {
-    name: "Rohan Saroj",
+    name: "Jay Sawant",
     role: "Member",
-    work: "Animations",
-  },
-  {
-    name: "Sourav Pant",
-    role: "Member",
-    work: "Story line",
+    work: "Game Programmer",
   },
 ];
-export const apiURL = "https://invento-backend-bwjj.onrender.com";
+// export const apiURL = "https://invento-backend-bwjj.onrender.com";
+export const apiURL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000";
+
 
 export const AvatarData = {
-  name: "Avatar",
-  desc: "Venture into stunning realms, slay monsters, and conquer the unknown—Unleash your power in Unity's masterpiece!",
+  name: "Tripo",
+  desc: `Players explore ancient mystical forests, guided by a narrator, overcoming
+dangerous obstacles and completing story-driven tasks to unlock portals and progress
+through the journey.`,
   isBeta: true,
   downloadLink: "https://999studio.itch.io/",
   buildUsing: ["Unity", "Blender", "Sketch-Fab", "Assest Store"],
   buildInvestement: 100,
-  images: { main: "/assets/i1.jpg", list: [] },
+  images: { main: "/assets/Banner.jpeg", list: [] },
 };
 
 export const GameData = [
