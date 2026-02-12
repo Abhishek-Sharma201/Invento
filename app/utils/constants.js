@@ -48,7 +48,7 @@ export const TeamData = [
   },
 ];
 // export const apiURL = "https://invento-backend-bwjj.onrender.com";
-export const apiURL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000";
+export const apiURL = process.env.NEXT_PUBLIC_API_URL || "https://invento-backend-bwjj.onrender.com";
 
 
 export const AvatarData = {
