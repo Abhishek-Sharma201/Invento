@@ -46,13 +46,23 @@ export const TeamData = [
     role: "Member",
     work: "Game Programmer",
   },
+  {
+    name: "Mohit Rathod",
+    role: "Member",
+    work: "Editor",
+  },
+  {
+    name: "Swayam Dey",
+    role: "Member",
+    work: "3D Artist",
+  },
 ];
 // export const apiURL = "https://invento-backend-bwjj.onrender.com";
 export const apiURL = process.env.NEXT_PUBLIC_API_URL || "https://invento-backend-bwjj.onrender.com";
 
 
 export const AvatarData = {
-  name: "Tripo",
+  name: "Avatar",
   desc: `Players explore ancient mystical forests, guided by a narrator, overcoming
 dangerous obstacles and completing story-driven tasks to unlock portals and progress
 through the journey.`,
@@ -60,7 +70,7 @@ through the journey.`,
   downloadLink: "https://999studio.itch.io/tripo-the-lost-path",
   buildUsing: ["Unity", "Blender", "Sketch-Fab", "Assest Store"],
   buildInvestement: 100,
-  images: { main: "/assets/Banner.jpeg", list: [] },
+  images: { main: "/assets/Avatar.jpeg", list: [] },
 };
 
 export const GameData = [
